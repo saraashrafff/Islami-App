@@ -37,9 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
 
             image: AssetImage(
               'assets/images/${backgroundImageNames[currentIndex]}.png',
