@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/quran/sura.dart';
+import 'package:islami/tabs/quran/sura.dart';
 
 class SuraItem extends StatelessWidget {
   Sura sura;

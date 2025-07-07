@@ -5,13 +5,20 @@ class AppTheme {
   static const Color black = Color(0xFF202020);
   static const Color white = Color(0xFFFFFFFF);
 
-  static ThemeData lightTheme = ThemeData(
-    primaryColor: primary,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: primary,
-    ),
-  );
+  static ThemeData lightTheme = ThemeData();
+
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: black,
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+      foregroundColor: primary,
+      backgroundColor: black,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: primary,
+      ),
+    ),
     primaryColor: primary,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: primary,
