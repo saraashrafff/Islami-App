@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:islami/hadeth_tab.dart';
+import 'package:islami/tabs/hadeth_tab.dart';
 import 'package:islami/nav_bar_selected_icons.dart';
 import 'package:islami/nav_bar_unselected_icons.dart';
+<<<<<<< HEAD
 import 'package:islami/tabs/quran_tab.dart';
+=======
+import 'package:islami/tabs/quran/quran_tab.dart';
+>>>>>>> feature/quran
 import 'package:islami/tabs/radio_tab.dart';
 import 'package:islami/tabs/sebha_tab.dart';
 import 'package:islami/tabs/time_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routName = '/';
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -37,10 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            fit: BoxFit.cover,
-
+            fit: BoxFit.fill,
             image: AssetImage(
               'assets/images/${backgroundImageNames[currentIndex]}.png',
             ),
@@ -53,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.sizeOf(context).height * 0.15,
               fit: BoxFit.fitWidth,
             ),
-            tabs[currentIndex],
+            Expanded(child: tabs[currentIndex]),
           ],
         ),
       ),
