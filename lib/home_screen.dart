@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/tabs/hadeth_tab.dart';
 import 'package:islami/nav_bar_selected_icons.dart';
 import 'package:islami/nav_bar_unselected_icons.dart';
-<<<<<<< HEAD
-import 'package:islami/tabs/quran_tab.dart';
-=======
 import 'package:islami/tabs/quran/quran_tab.dart';
->>>>>>> feature/quran
 import 'package:islami/tabs/radio_tab.dart';
 import 'package:islami/tabs/sebha_tab.dart';
 import 'package:islami/tabs/time_tab.dart';
@@ -52,15 +48,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        child: Column(
-          children: [
-            Image.asset(
-              'assets/images/header.png',
-              height: MediaQuery.sizeOf(context).height * 0.15,
-              fit: BoxFit.fitWidth,
-            ),
-            Expanded(child: tabs[currentIndex]),
-          ],
+        child: SafeArea(
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/header.png',
+                height: MediaQuery.sizeOf(context).height * 0.15,
+                fit: BoxFit.fitWidth,
+              ),
+              Expanded(child: tabs[currentIndex]),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
