@@ -5,9 +5,9 @@ int sebhaCount = 0;
 int sebhaIndex = 0;
 void updateSebha() {
   sebhaCount++;
-  if (sebhaCount % 33 == 0) {
+  if (sebhaCount % 33 == 1 && sebhaCount != 1) {
     if (sebhaIndex < sebhaItems.length - 1) {
-      sebhaIndex += 1;
+      sebhaIndex++;
     } else {
       sebhaIndex = 0;
     }
@@ -15,6 +15,8 @@ void updateSebha() {
 }
 
 class SebhaTab extends StatefulWidget {
+  const SebhaTab({super.key});
+
   @override
   State<SebhaTab> createState() => _SebhaTabState();
 }
