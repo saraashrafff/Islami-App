@@ -5,10 +5,24 @@ class AppTheme {
   static const Color black = Color(0xFF202020);
   static const Color white = Color(0xFFFFFFFF);
 
+  static BoxDecoration get selectedToggleDecoration =>
+      BoxDecoration(color: primary, borderRadius: BorderRadius.circular(12));
+
+  static BoxDecoration get unselectedToggleDecoration => BoxDecoration(
+    color: black.withValues(alpha: 0.7),
+    borderRadius: BorderRadius.circular(12),
+  );
+
   static ThemeData lightTheme = ThemeData();
 
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: black,
+    toggleButtonsTheme: ToggleButtonsThemeData(
+      borderRadius: BorderRadius.circular(12),
+      fillColor: primary,
+      color: AppTheme.white,
+      selectedColor: AppTheme.black,
+    ),
     appBarTheme: AppBarTheme(
       centerTitle: true,
       foregroundColor: primary,
