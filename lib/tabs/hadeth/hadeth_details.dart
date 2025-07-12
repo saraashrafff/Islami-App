@@ -1,36 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:islami/app_theme.dart';
-import 'package:islami/tabs/quran/quran_service.dart';
-import 'package:islami/tabs/quran/sura.dart';
-import 'package:islami/widgets/loading_indicator.dart';
+import 'package:islami/tabs/hadeth/hadeth.dart';
 
-class SuraDetailsScreen extends StatefulWidget {
-  static const routeName = '/sura-details';
+class HadethDetailsScreen extends StatefulWidget {
+  static const routeName = '/hadeth-details';
 
-  const SuraDetailsScreen({super.key});
+  const HadethDetailsScreen({super.key});
 
   @override
-  State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
+  State<HadethDetailsScreen> createState() => _HadethDetailsScreenState();
 }
 
-class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
-  late Sura sura;
-
-  List<String> ayat = [];
-
+class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     double screenHeight = MediaQuery.sizeOf(context).height;
-    sura = ModalRoute.of(context)!.settings.arguments as Sura;
-    if (ayat.isEmpty) {
-      loadSura();
-    }
+    Hadeth hadeth = ModalRoute.of(context)!.settings.arguments as Hadeth;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(sura.englishName),
+        title: Text('Hadeth ${hadeth.num}'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -49,7 +40,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   fit: BoxFit.fill,
                 ),
                 Text(
-                  sura.arabicName,
+                  hadeth.title,
                   style: textTheme.headlineSmall!.copyWith(
                     color: AppTheme.primary,
                   ),
@@ -62,22 +53,17 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               ],
             ),
           ),
-
           Expanded(
-            child: ayat.isEmpty
-                ? LoadingIndicator()
-                : ListView.separated(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    itemBuilder: (_, index) => Text(
-                      ayat[index],
-                      style: textTheme.titleLarge!.copyWith(
-                        color: AppTheme.primary,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    separatorBuilder: (_, index) => SizedBox(height: 12),
-                    itemCount: ayat.length,
-                  ),
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              itemBuilder: (_, index) => Text(
+                hadeth.content[index],
+                style: textTheme.titleLarge!.copyWith(color: AppTheme.primary),
+                textAlign: TextAlign.center,
+              ),
+              separatorBuilder: (_, index) => SizedBox(height: 12),
+              itemCount: hadeth.content.length,
+            ),
           ),
           Image.asset(
             'assets/images/details_footer.png',
@@ -87,11 +73,5 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         ],
       ),
     );
-  }
-
-  Future<void> loadSura() async {
-    String suraFileContent = await QuranService.loadSuraFile(sura.num);
-    ayat = suraFileContent.split('\r\n');
-    setState(() {});
   }
 }

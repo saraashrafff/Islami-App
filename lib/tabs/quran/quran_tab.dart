@@ -61,7 +61,7 @@ class _QuranTabState extends State<QuranTab> {
                   QuranService.addSuraToMostRecently(sura);
                   await Navigator.of(
                     context,
-                  ).pushNamed(SuraDetailsScreen.RouteName, arguments: sura);
+                  ).pushNamed(SuraDetailsScreen.routeName, arguments: sura);
                   setState(() {});
                 },
                 child: SuraItem(sura),
