@@ -384,10 +384,10 @@ class QuranService {
       'mostRecentlyIndexes',
     );
     if (mostRecentlyIndexes == null) return;
-    mostRecentlyIndexes.map((indexString) {
+
+    mostRecentlySuras = mostRecentlyIndexes.map((indexString) {
       int index = int.parse(indexString);
-      Sura sura = getSuraFromIndex(index);
-      return sura;
+      return getSuraFromIndex(index);
     }).toList();
   }
 
